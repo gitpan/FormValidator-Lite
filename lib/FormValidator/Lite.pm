@@ -8,7 +8,7 @@ use Scalar::Util qw/blessed/;
 use FormValidator::Lite::Constraint::Default;
 use FormValidator::Lite::Upload;
 
-our $VERSION = '0.01_01';
+our $VERSION = '0.01_02';
 
 our $Rules;
 our $FileRules;
@@ -144,15 +144,22 @@ sub get_error_message {
     my $err_message  = $msg->{message}->{"${param}.${function}"};
     my $err_param    = $msg->{param}->{$param};
     my $err_function = $msg->{function}->{$function};
+
+    my $gen_msg = sub {
+        my ($tmpl, @args) = @_;
+        local $_ = $tmpl;
+        s!\[_(\d+)\]!$args[$1-1]!ge;
+        $_;
+    };
     
     if ($err_message) {
-        return sprintf($err_message, $err_param);
+        return $gen_msg->($err_message, $err_param);
     } elsif ($err_function && $err_param) {
-        return sprintf($err_function, $err_param);
+        return $gen_msg->($err_function, $err_param);
     } else {
         Carp::carp  "${param}.${function} is not defined in message file.";
         if ($msg->{default_tmpl}) {
-            return sprintf($err_function || $msg->{default_tmpl}, $err_function || $param);
+            return $gen_msg->($err_function || $msg->{default_tmpl}, $err_function || $param);
         } else {
             return '';
         }
@@ -218,9 +225,11 @@ FormValidator::Lite is fast!
 
 =head1 AUTHOR
 
-Default Name E<lt>default {at} example.comE<gt>
+Tokuhiro Matsuno E<lt>tokuhirom {at} gmail.comE<gt>
 
 =head1 SEE ALSO
+
+L<FormValidator::Simple>, L<Data::FormValidator>, L<HTML::FormFu>
 
 =head1 LICENSE
 
