@@ -26,7 +26,12 @@ sub new {
         } elsif (ref $q eq 'HTTP::Engine::Request') {
             'HTTPEngine';
         } else {
-            die "unknown request type: $q";
+            if ($q->can('upload') && (my $u = $q->upload($name))) {
+                # this feature is needed by HTML::Shakan or other form validation libraries
+                return $u; # special case :)
+            } else {
+                die "unknown request type: $q";
+            }
         }
     };
     $pkg = 'FormValidator::Lite::Upload::' . $pkg;

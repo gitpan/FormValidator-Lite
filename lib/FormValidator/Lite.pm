@@ -8,7 +8,7 @@ use Scalar::Util qw/blessed/;
 use FormValidator::Lite::Constraint::Default;
 use FormValidator::Lite::Upload;
 
-our $VERSION = '0.01_05';
+our $VERSION = '0.02';
 
 our $Rules;
 our $FileRules;
@@ -70,7 +70,7 @@ sub is_error {
 
 sub is_valid {
     my $self = shift;
-    !$self->has_error;
+    !$self->has_error ? 1 : 0;
 }
 
 sub has_error {

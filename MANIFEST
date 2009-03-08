@@ -51,6 +51,7 @@ t/020_constraints/006_file.t
 t/020_constraints/007_choice.t
 t/030_upload/001_cgi.t
 t/030_upload/002_he.t
+t/030_upload/003_special.t
 t/dat/file_post.txt
 TODO
 xt/01_podspell.t
