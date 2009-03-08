@@ -48,6 +48,7 @@ t/020_constraints/003_url.t
 t/020_constraints/004_email.t
 t/020_constraints/005_date.t
 t/020_constraints/006_file.t
+t/020_constraints/007_choice.t
 t/030_upload/001_cgi.t
 t/030_upload/002_he.t
 t/dat/file_post.txt
