@@ -8,7 +8,7 @@ use Scalar::Util qw/blessed/;
 use FormValidator::Lite::Constraint::Default;
 use FormValidator::Lite::Upload;
 
-our $VERSION = '0.02';
+our $VERSION = '0.02_01';
 
 our $Rules;
 our $FileRules;
@@ -115,6 +115,15 @@ sub set_message_data {
     $self->{_msg} = $msg;
 }
 
+sub set_message {
+    my ($self, @args) = @_;
+    my %msg = ref $args[0] ? %{$args[0]} : @args;
+    $self->{_msg}->{message} = +{
+        %{ $self->{_msg}->{message} },
+        %msg
+    };
+}
+
 sub get_error_messages {
     my $self = shift;
     Carp::croak("message doesn't loaded yet") unless $self->{_msg};
@@ -214,9 +223,13 @@ Yes, I know. This module is very similar with FV::S.
 But, FormValidator::Simple is too heavy for me.
 FormValidator::Lite is fast!
 
-                            Rate FormValidator::Simple   FormValidator::Lite
-    FormValidator::Simple  442/s                    --                  -73%
-    FormValidator::Lite   1639/s                  270%                    --
+   Perl: 5.010000
+   FVS: 0.23
+   FVL: 0.02
+                           Rate FormValidator::Simple   FormValidator::Lite
+   FormValidator::Simple  353/s                    --                  -75%
+   FormValidator::Lite   1429/s                  304%                    --
+
 
 =head1 HOW TO WRITE YOUR OWN CONSTRAINTS
 
