@@ -8,7 +8,7 @@ use Scalar::Util qw/blessed/;
 use FormValidator::Lite::Constraint::Default;
 use FormValidator::Lite::Upload;
 
-our $VERSION = '0.02_01';
+our $VERSION = '0.02_02';
 
 our $Rules;
 our $FileRules;
@@ -119,7 +119,7 @@ sub set_message {
     my ($self, @args) = @_;
     my %msg = ref $args[0] ? %{$args[0]} : @args;
     $self->{_msg}->{message} = +{
-        %{ $self->{_msg}->{message} },
+        %{ $self->{_msg}->{message} || +{} },
         %msg
     };
 }
