@@ -8,7 +8,7 @@ use Scalar::Util qw/blessed/;
 use FormValidator::Lite::Constraint::Default;
 use FormValidator::Lite::Upload;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 our $Rules;
 our $FileRules;
@@ -40,17 +40,19 @@ sub check {
             $_ = $q->param($key);
         }
         for my $rule (@$rules) {
-            my $rule_name = ref $rule ? shift(@$rule) : $rule;
+            my $rule_name = ref($rule) ? $rule->[0]                        : $rule;
+            my $args      = ref($rule) ? [ @$rule[ 1 .. scalar(@$rule)-1 ] ] : +[];
+
             my $is_ok = do {
                 if ((not defined $_) && $rule_name ne 'NOT_NULL') {
                     1;
                 } else {
                     if (my $file_rule = $FileRules->{$rule_name}) {
                         local $_ = FormValidator::Lite::Upload->new($q, $key);
-                        $file_rule->(ref $rule ? @$rule : ()) ? 1 : 0;
+                        $file_rule->(@$args) ? 1 : 0;
                     } else {
                         my $code = $Rules->{$rule_name} or Carp::croak("unknown rule $rule_name");
-                        $code->(ref $rule ? @$rule : ()) ? 1 : 0;
+                        $code->(@$args) ? 1 : 0;
                     }
                 }
             };
@@ -194,10 +196,10 @@ FormValidator::Lite - lightweight form validation library
     my $res = $validator->check(
         name => [qw/NOT_NULL/],
         name_kana => [qw/NOT_NULL KATAKANA/],
-        {mails => [qw/mail1 mail2/]} => ['DUPLICATE'],
+        {mails => [qw/mail1 mail2/]} => ['DUPLICATION'],
     );
     if ( ..... return_true_when_if_error() ..... ) {
-        $validator->set_error('login_id' => 'DUPLICATE');
+        $validator->set_error('login_id' => 'DUPLICATION');
     }
     if ($validator->has_error) {
         ...
@@ -239,6 +241,10 @@ FormValidator::Lite is fast!
 =head1 AUTHOR
 
 Tokuhiro Matsuno E<lt>tokuhirom {at} gmail.comE<gt>
+
+=head1 THANKS TO
+
+craftworks
 
 =head1 SEE ALSO
 
