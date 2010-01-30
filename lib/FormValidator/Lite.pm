@@ -8,7 +8,7 @@ use Scalar::Util qw/blessed/;
 use FormValidator::Lite::Constraint::Default;
 use FormValidator::Lite::Upload;
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 our $Rules;
 our $FileRules;
@@ -177,6 +177,24 @@ sub get_error_message {
     }
 }
 
+sub get_error_messages_from_param {
+    my ($self, $target_param) = @_;
+
+    my %dup_check;
+    my @messages;
+    for my $err (@{$self->{_error_ary}}) {
+        my $param = $err->[0];
+        my $func  = $err->[1];
+
+        next if $target_param ne $param;
+        next if exists $dup_check{"$param.$func"};
+        push @messages, $self->get_error_message( $param, $func );
+        $dup_check{"$param.$func"}++;
+    }
+
+    return @messages;
+}
+
 1;
 
 __END__
@@ -238,6 +256,48 @@ FormValidator::Lite is fast!
     http parameter comes from $_
     validator args comes from @_
 
+=head1 METHODS
+
+=over 4
+
+=item my $validator = FormValidator::Lite->new($q);
+
+$q is query like object, such as Apache::Request, CGI.pm, Plack::Request.
+
+=item $validator->check(@rule_ary)
+
+=item $validator->is_error($key)
+
+=item $validator->is_valid()
+
+=item $validator->has_error()
+
+Got a error?
+
+=item $validator->set_error($param, $rule_name)
+
+=item $validator->load_constraints($name)
+
+load constraint components named "FormValidator::Lite::Constraint::${name}".
+
+=item $validator->load_function_message($lang)
+
+Load function message file.
+
+=item $validator->set_param_message($param => $message, ...)
+
+=item $validator->set_message_data({ message => $msg, param => $param, function => $function })
+
+=item $validator->set_message("$param.$func" => $message)
+
+=item $validator->get_error_messages()
+
+=item $validator->get_error_message($param => $func)
+
+=item $validator->get_error_messages_from_param($param)
+
+=back
+
 =head1 AUTHOR
 
 Tokuhiro Matsuno E<lt>tokuhirom {at} gmail.comE<gt>
@@ -245,6 +305,8 @@ Tokuhiro Matsuno E<lt>tokuhirom {at} gmail.comE<gt>
 =head1 THANKS TO
 
 craftworks
+
+nekokak
 
 =head1 SEE ALSO
 

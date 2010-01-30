@@ -17,6 +17,7 @@ inc/Test/Base/Filter.pm
 inc/Test/Builder.pm
 inc/Test/Builder/Module.pm
 inc/Test/More.pm
+inc/Test/Requires.pm
 inc/YAML.pm
 lib/FormValidator/Lite.pm
 lib/FormValidator/Lite/Constraint.pm
@@ -42,6 +43,8 @@ t/010_core/003_get_error_messages.t
 t/010_core/004_hashkey.t
 t/010_core/005_messages.t
 t/010_core/006_not_null.t
+t/010_core/007_integrate_with_plack.t
+t/010_core/008_get_error_messages_from_param.t
 t/020_constraints/001_default.t
 t/020_constraints/002_japanese.t
 t/020_constraints/003_url.t
