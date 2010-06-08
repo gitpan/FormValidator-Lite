@@ -5,7 +5,7 @@ use Test::Base;
 use FormValidator::Lite;
 use CGI;
 
-FormValidator::Lite->load_constraints(qw/Date/);
+FormValidator::Lite->load_constraints(qw/Time/);
 
 plan tests => 1*blocks;
 
@@ -33,69 +33,69 @@ run {
 
 __END__
 
-=== DATE
---- query: { y => 2009, m => 2, d => 30 }
+=== TIME should success
+--- query: { h => 12, m => 0, s => 30 }
 --- rule
 (
-    {date => [qw/y m d/]} => ['DATE'],
+    {date => [qw/h m s/]} => ['TIME'],
+)
+--- expected
+(
+    date => 0,
+)
+ 
+=== TIME should fail
+--- query: { h => 24, m => 0, s => 0 }
+--- rule
+(
+    {date => [qw/h m s/]} => ['TIME'],
 )
 --- expected
 (
     date => 1,
 )
 
-=== DATE
---- query: { y => 2009, m => 2, d => 28 }
+=== TIME-NOT_NULL
+--- query: {  }
 --- rule
 (
-    {date => [qw/y m d/]} => ['DATE'],
+    {date => [qw/h m s/]} => ['TIME', 'NOT_NULL'],
+)
+--- expected
+(
+    date => 1,
+)
+
+=== TIME-NOT_NULL
+--- query: {  }
+--- rule
+(
+    {date => [qw/h m s/]} => ['NOT_NULL'],
+)
+--- expected
+(
+    date => 1,
+)
+
+=== TIME
+--- query: { time => '12:30:00' }
+--- rule
+(
+    date => ['TIME'],
 )
 --- expected
 (
     date => 0,
 )
 
-=== DATE-NOT_NULL
---- query: {  }
+=== TIME should not warn with ''
+--- query: { h => '', m => '', s => ''}
 --- rule
 (
-    {date => [qw/y m d/]} => ['DATE', 'NOT_NULL'],
+    {date => [qw/h m s/]} => ['TIME'],
 )
 --- expected
 (
     date => 1,
 )
-
-=== DATE-NOT_NULL
---- query: {  }
---- rule
-(
-    {date => [qw/y m d/]} => ['NOT_NULL'],
-)
---- expected
-(
-    date => 1,
-)
-
-=== DATE
---- query: { date => '2009-02-28' }
---- rule
-(
-    date => ['DATE'],
-)
---- expected
-(
-    date => 0,
-)
-
-=== DATE with blank arg.
---- query: { y => '', m => '', d => ''}
---- rule
-(
-    {date => [qw/y m d/]} => ['DATE'],
-)
---- expected
-(
-    date => 1,
-)
-
+ 

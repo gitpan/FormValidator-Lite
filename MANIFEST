@@ -26,6 +26,7 @@ lib/FormValidator/Lite/Constraint/Default.pm
 lib/FormValidator/Lite/Constraint/Email.pm
 lib/FormValidator/Lite/Constraint/File.pm
 lib/FormValidator/Lite/Constraint/Japanese.pm
+lib/FormValidator/Lite/Constraint/Time.pm
 lib/FormValidator/Lite/Constraint/URL.pm
 lib/FormValidator/Lite/Messages/en.pm
 lib/FormValidator/Lite/Messages/ja.pm
@@ -52,6 +53,7 @@ t/020_constraints/004_email.t
 t/020_constraints/005_date.t
 t/020_constraints/006_file.t
 t/020_constraints/007_choice.t
+t/020_constraints/008_time.t
 t/030_upload/001_cgi.t
 t/030_upload/002_he.t
 t/030_upload/003_special.t
