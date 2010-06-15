@@ -8,7 +8,7 @@ use Scalar::Util qw/blessed/;
 use FormValidator::Lite::Constraint::Default;
 use FormValidator::Lite::Upload;
 
-our $VERSION = '0.13';
+our $VERSION = '0.14';
 
 our $Rules;
 our $FileRules;
@@ -44,7 +44,7 @@ sub check {
             my $args      = ref($rule) ? [ @$rule[ 1 .. scalar(@$rule)-1 ] ] : +[];
 
             my $is_ok = do {
-                if ((not $_) && $rule_name ne 'NOT_NULL') {
+                if ((not (defined $_ && length $_)) && $rule_name ne 'NOT_NULL') {
                     1;
                 } else {
                     if (my $file_rule = $FileRules->{$rule_name}) {
