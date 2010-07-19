@@ -8,7 +8,7 @@ use Scalar::Util qw/blessed/;
 use FormValidator::Lite::Constraint::Default;
 use FormValidator::Lite::Upload;
 
-our $VERSION = '0.15';
+our $VERSION = '0.16';
 
 our $Rules;
 our $FileRules;
@@ -141,7 +141,7 @@ sub get_error_messages {
         $dup_check{"$param.$func"}++;
     }
 
-    return @messages;
+    return wantarray ? @messages : \@messages;
 }
 
 # $validator->get_error_message('email', 'NOT_NULL');
@@ -281,6 +281,8 @@ load constraint components named "FormValidator::Lite::Constraint::${name}".
 
 =item $validator->load_function_message($lang)
 
+    $validator->load_function_message('ja');
+
 Load function message file.
 
 Currently, FormValidator::Lite::Messages::ja and FormValidator::Lite::Messages::en are available.
@@ -316,7 +318,9 @@ Set error message for the $param and $func.
 
 =item my @errors = $validator->get_error_messages()
 
-Get whole error messages for $q in arrayref.
+=item my $errors = $validator->get_error_messages()
+
+Get whole error messages for $q in array/arrayref.
 
 =item my $msg = $validator->get_error_message($param => $func)
 
