@@ -11,7 +11,7 @@ use Class::Accessor::Lite;
 
 Class::Accessor::Lite->mk_accessors(qw/query/);
 
-our $VERSION = '0.18';
+our $VERSION = '0.19';
 
 our $Rules;
 our $FileRules;
@@ -285,6 +285,11 @@ This is same as !$validator->is_valid().
 Set new error to parameter named $param. The rule name is  $rule_name.
 
 =item $validator->load_constraints($name)
+
+    $validator->load_function_message("DATE");
+
+    # or load your own constraints
+    $validator->load_function_message("+MyApp::FormValidator::Lite::Constraint");
 
 load constraint components named "FormValidator::Lite::Constraint::${name}".
 
