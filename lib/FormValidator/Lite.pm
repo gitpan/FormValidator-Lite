@@ -11,7 +11,7 @@ use Class::Accessor::Lite;
 
 Class::Accessor::Lite->mk_accessors(qw/query/);
 
-our $VERSION = '0.19';
+our $VERSION = '0.20';
 
 our $Rules;
 our $FileRules;
@@ -195,7 +195,7 @@ sub get_error_messages_from_param {
         $dup_check{"$param.$func"}++;
     }
 
-    return @messages;
+    return wantarray ? @messages : \@messages;
 }
 
 1;
