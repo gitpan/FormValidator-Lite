@@ -33,6 +33,7 @@ lib/FormValidator/Lite/Messages/ja.pm
 lib/FormValidator/Lite/Upload.pm
 lib/FormValidator/Lite/Upload/CGI.pm
 lib/FormValidator/Lite/Upload/HTTPEngine.pm
+lib/FormValidator/Lite/Upload/PlackRequest.pm
 Makefile.PL
 MANIFEST			This list of files
 META.yml
@@ -59,6 +60,7 @@ t/020_constraints/008_time.t
 t/030_upload/001_cgi.t
 t/030_upload/002_he.t
 t/030_upload/003_special.t
+t/030_upload/004_plack.t
 t/999_regression/001_break_arguments_in_check.t
 t/dat/file_post.txt
 TODO
