@@ -19,6 +19,7 @@ no_index:
     - t
     - xt
 recommends:
+  Email::Valid: 0
   Email::Valid::Loose: 0
 requires:
   CGI: 3.31
@@ -29,4 +30,4 @@ requires:
   perl: 5.8.1
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.21
+version: 0.22

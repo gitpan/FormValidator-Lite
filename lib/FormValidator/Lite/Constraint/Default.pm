@@ -10,6 +10,7 @@ rule 'NOT_NULL' => sub {
 rule 'INT'  => sub { $_ =~ /\A[+\-]?[0-9]+\z/ };
 rule 'UINT' => sub { $_ =~ /\A[0-9]+\z/      };
 alias 'NOT_NULL' => 'NOT_BLANK';
+alias 'NOT_NULL' => 'REQUIRED';
 
 rule 'ASCII' => sub {
     $_ =~ /^[\x21-\x7E]+$/
@@ -29,6 +30,11 @@ rule 'LENGTH' => sub {
     Carp::croak("missing \$min") unless defined($min);
 
     ( $min <= $length and $length <= $max )
+};
+
+rule 'EQUAL' => sub {
+    Carp::croak("missing \$argument") if @_ == 0;
+    $_ eq $_[0]
 };
 
 rule 'REGEX' => sub {
@@ -51,6 +57,38 @@ rule 'CHOICE' => sub {
     return 0;
 };
 
+rule 'MATCH' => sub {
+    my $callback = shift;
+    Carp::croak("missing \$callback") if ref $callback ne 'CODE';
+
+    $callback->($_);
+};
+
+our $Filters = {
+    trim => sub {
+        my $value = shift;
+        return $value unless $value;
+        $value =~ s/^\s+|\s+$//g;
+        $value;
+    },
+};
+
+rule 'FILTER' => sub {
+    my $filter = shift;
+    Carp::croak("missing \$filter") unless $filter;
+    
+    if (not ref $filter) {
+        $filter = $Filters->{$filter}
+            or Carp::croak("$filter is not defined.");
+    }
+    
+    Carp::croak("\$filter must be coderef.") if ref $filter ne 'CODE';
+    
+    $_ = $filter->($_);
+    
+    1; # always return true
+};
+
 1;
 __END__
 
@@ -70,7 +108,7 @@ This module provides default constraint rules for L<FormValidator::Lite>.
 
 The parameter is true value or not.
 
-=item NOT_BLANK
+=item NOT_BLANK, REQUIRED
 
 Synonym of NOT_NULL.
 
@@ -110,6 +148,14 @@ Synonym of DUPLICATION.
 Check the length of data. First argument means $minumum value, second argument is $max.
 $max is optional.
 
+=item EQUAL
+
+    $validator->check(
+        name => [[EQUAL => "foo"]],
+    );
+
+Check parameter match the argument or not.
+
 =item REGEX
 
     $validator->check(
@@ -129,6 +175,29 @@ Synonym of REGEX.
     );
 
 The parameter is one of choice or not.
+
+=item MATCH
+
+    use MyApp::Util qw/is_foo/;
+
+    $validator->check(
+        foo => [[MATCH => \&is_foo ]],
+        bar => [[MATCH => sub { $_[0] eq 'foo' } ]],
+    );
+
+Check parameter using callback. Callback takes parameter as first argument,
+should return true/false.
+
+=item FILTER
+
+    $validator->check(
+        foo => [[FILTER => 'trim'], 'INT'],
+        bar => [[FILTER => sub { $_[0] . '@example.com' } ], 'EMAIL'],
+    );
+
+FILTER is special constraint. It does not check the value and simply filter.
+"trim" is only pre-defined. You can also pass a callback.
+Callback takes parameter as first argument, should return filterd value.
 
 =back
 

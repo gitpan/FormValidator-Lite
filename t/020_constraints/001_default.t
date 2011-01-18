@@ -5,7 +5,7 @@ use Test::Base;
 use FormValidator::Lite;
 use CGI;
 
-plan tests => 23;
+plan tests => 41;
 
 filters {
     query    => [qw/eval/],
@@ -32,16 +32,60 @@ run {
 __END__
 
 === NOT_NULL
---- query: { hoge => 1, hoga => 1}
+--- query: { hoge => 1, zero => 0, blank => "", undef => undef }
 --- rule
 (
-    hoge => [qw/NOT_NULL/],
-    fuga => [qw/NOT_NULL/],
+    hoge    => [qw/NOT_NULL/],
+    zero    => [qw/NOT_NULL/],
+    blank   => [qw/NOT_NULL/],
+    undef   => [qw/NOT_NULL/],
+    missing => [qw/NOT_NULL/],
 );
 --- expected
 (
-    hoge => 0,
-    fuga => 1,
+    hoge    => 0,
+    zero    => 0,
+    blank   => 1,
+    undef   => 1,
+    missing => 1,
+)
+
+=== NOT_BLANK
+--- query: { hoge => 1, zero => 0, blank => "", undef => undef }
+--- rule
+(
+    hoge    => [qw/NOT_BLANK/],
+    zero    => [qw/NOT_BLANK/],
+    blank   => [qw/NOT_BLANK/],
+    undef   => [qw/NOT_BLANK/],
+    missing => [qw/NOT_BLANK/],
+);
+--- expected
+(
+    hoge    => 0,
+    zero    => 0,
+    blank   => 1,
+    undef   => 1,
+    missing => 1,
+)
+
+=== REQUIRED
+--- query: { hoge => 1, zero => 0, blank => "", undef => undef }
+--- rule
+(
+    hoge    => [qw/REQUIRED/],
+    zero    => [qw/REQUIRED/],
+    blank   => [qw/REQUIRED/],
+    undef   => [qw/REQUIRED/],
+    missing => [qw/REQUIRED/],
+);
+--- expected
+(
+    hoge    => 0,
+    zero    => 0,
+    blank   => 1,
+    undef   => 1,
+    missing => 1,
 )
 
 === INT
@@ -127,6 +171,19 @@ __END__
     x3 => 0,
 )
 
+=== EQUAL
+--- query: { 'z1' => 'foo', 'z2' => 'foo' }
+--- rule
+(
+    'z1' => [[EQUAL => 'foo']],
+    'z2' => [[EQUAL => 'bar']],
+)
+--- expected
+(
+    z1 => 0,
+    z2 => 1,
+)
+
 === REGEX
 --- query: { 'z1' => 'ba3', 'z2' => 'bao' }
 --- rule
@@ -138,5 +195,29 @@ __END__
 (
     z1 => 0,
     z2 => 1,
+)
+
+=== MATCH
+--- query: { 'z1' => 'ba3', 'z2' => 'bao' }
+--- rule
+(
+    z1 => [[MATCH => sub { $_[0] eq 'ba3' } ]],
+)
+--- expected
+(
+    z1 => 0,
+)
+
+=== FILTER
+--- query: { 'foo' => ' 123 ', bar => 'one' }
+--- rule
+(
+    foo => [[FILTER => 'trim'], 'INT'],
+    bar => [[FILTER => sub { my $v = shift; $v =~ s/one/1/; $v } ], 'INT'],
+)
+--- expected
+(
+    foo => 0,
+    bar => 0,
 )
 

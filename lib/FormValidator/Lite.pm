@@ -11,7 +11,7 @@ use Class::Accessor::Lite;
 
 Class::Accessor::Lite->mk_accessors(qw/query/);
 
-our $VERSION = '0.21';
+our $VERSION = '0.22';
 
 our $Rules;
 our $FileRules;
@@ -47,7 +47,7 @@ sub check {
             my $args      = ref($rule) ? [ @$rule[ 1 .. scalar(@$rule)-1 ] ] : +[];
 
             my $is_ok = do {
-                if ((not (defined $_ && length $_)) && $rule_name ne 'NOT_NULL') {
+                if ((not (defined $_ && length $_)) && $rule_name !~ /^(NOT_NULL|NOT_BLANK|REQUIRED)$/) {
                     1;
                 } else {
                     if (my $file_rule = $FileRules->{$rule_name}) {
@@ -87,6 +87,11 @@ sub set_error {
     my ($self, $param, $rule_name) = @_;
     $self->{_error}->{$param}->{$rule_name}++;
     push @{$self->{_error_ary}}, [$param, $rule_name];
+}
+
+sub errors {
+    my ($self) = @_;
+    $self->{_error};
 }
 
 sub load_constraints {
@@ -284,12 +289,25 @@ This is same as !$validator->is_valid().
 
 Set new error to parameter named $param. The rule name is  $rule_name.
 
+=item $validator->errors()
+
+Return whole errors as HashRef.
+    
+    {
+        'foo' => { 'NOT_NULL' => 1, 'INT' => 1 },
+        'bar' => { 'EMAIL' => 1, },
+    }
+
 =item $validator->load_constraints($name)
 
-    $validator->load_function_message("DATE");
+    $validator->load_constraints("DATE", "Email");
 
     # or load your own constraints
-    $validator->load_function_message("+MyApp::FormValidator::Lite::Constraint");
+    $validator->load_constraints("+MyApp::FormValidator::Lite::Constraint");
+
+There is a import style.
+
+    use FormValidator::Lite qw/Date Email/;
 
 load constraint components named "FormValidator::Lite::Constraint::${name}".
 
