@@ -54,6 +54,7 @@ t/020_constraints/002_japanese.t
 t/020_constraints/003_url.t
 t/020_constraints/004_email.t
 t/020_constraints/005_date.t
+t/020_constraints/006_file-plack.t
 t/020_constraints/006_file.t
 t/020_constraints/007_choice.t
 t/020_constraints/008_time.t
