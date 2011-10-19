@@ -1,15 +1,14 @@
 ---
 abstract: 'lightweight form validation library'
 author:
-  - 'Tokuhiro Matsuno <tokuhirom {at} gmail.com>'
+  - 'Tokuhiro Matsuno E<lt>tokuhirom AAJKLFJEF@ gmail.comE<gt>'
 build_requires:
-  ExtUtils::MakeMaker: 6.42
   Test::Requires: 0.05
   YAML: 0
 configure_requires:
-  ExtUtils::MakeMaker: 6.42
-distribution_type: module
-generated_by: 'Module::Install version 1.01'
+  Module::Build: 0.38
+dynamic_config: 0
+generated_by: 'Module::Build version 0.38, CPAN::Meta::Converter version 2.110440'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -17,19 +16,61 @@ meta-spec:
 name: FormValidator-Lite
 no_index:
   directory:
-    - inc
     - t
-    - xt
-recommends:
-  Email::Valid: 0
-  Email::Valid::Loose: 0
+    - inc
+provides:
+  FormValidator::Lite:
+    file: lib/FormValidator/Lite.pm
+    version: 0.26
+  FormValidator::Lite::Constraint:
+    file: lib/FormValidator/Lite/Constraint.pm
+    version: 0
+  FormValidator::Lite::Constraint::Date:
+    file: lib/FormValidator/Lite/Constraint/Date.pm
+    version: 0
+  FormValidator::Lite::Constraint::Default:
+    file: lib/FormValidator/Lite/Constraint/Default.pm
+    version: 0
+  FormValidator::Lite::Constraint::Email:
+    file: lib/FormValidator/Lite/Constraint/Email.pm
+    version: 0
+  FormValidator::Lite::Constraint::File:
+    file: lib/FormValidator/Lite/Constraint/File.pm
+    version: 0
+  FormValidator::Lite::Constraint::Japanese:
+    file: lib/FormValidator/Lite/Constraint/Japanese.pm
+    version: 0
+  FormValidator::Lite::Constraint::Time:
+    file: lib/FormValidator/Lite/Constraint/Time.pm
+    version: 0
+  FormValidator::Lite::Constraint::URL:
+    file: lib/FormValidator/Lite/Constraint/URL.pm
+    version: 0
+  FormValidator::Lite::Messages::en:
+    file: lib/FormValidator/Lite/Messages/en.pm
+    version: 0
+  FormValidator::Lite::Messages::ja:
+    file: lib/FormValidator/Lite/Messages/ja.pm
+    version: 0
+  FormValidator::Lite::Upload:
+    file: lib/FormValidator/Lite/Upload.pm
+    version: 0
+  FormValidator::Lite::Upload::CGI:
+    file: lib/FormValidator/Lite/Upload/CGI.pm
+    version: 0
+  FormValidator::Lite::Upload::HTTPEngine:
+    file: lib/FormValidator/Lite/Upload/HTTPEngine.pm
+    version: 0
+  FormValidator::Lite::Upload::PlackRequest:
+    file: lib/FormValidator/Lite/Upload/PlackRequest.pm
+    version: 0
 requires:
   CGI: 3.31
   Class::Accessor::Lite: 0.05
   Filter::Util::Call: 0
   Scalar::Util: 1.19
   UNIVERSAL::require: 0.11
-  perl: 5.8.1
+  perl: 5.008001
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.25
+version: 0.26

@@ -11,7 +11,7 @@ use Class::Accessor::Lite 0.05 (
     rw => [qw/query/]
 );
 
-our $VERSION = '0.25';
+our $VERSION = '0.26';
 
 our $Rules;
 our $FileRules;
@@ -391,7 +391,7 @@ FormValidator::Lite is fast!
 
 =head1 AUTHOR
 
-Tokuhiro Matsuno E<lt>tokuhirom {at} gmail.comE<gt>
+Tokuhiro Matsuno E<lt>tokuhirom AAJKLFJEF@ gmail.comE<gt>
 
 =head1 THANKS TO
 
