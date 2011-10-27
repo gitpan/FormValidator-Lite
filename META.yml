@@ -10,7 +10,7 @@ build_requires:
 configure_requires:
   Module::Build: 0.38
 dynamic_config: 0
-generated_by: 'Module::Build version 0.38, CPAN::Meta::Converter version 2.112150'
+generated_by: 'Module::Build version 0.38, CPAN::Meta::Converter version 2.112621'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -23,7 +23,7 @@ no_index:
 provides:
   FormValidator::Lite:
     file: lib/FormValidator/Lite.pm
-    version: 0.28
+    version: 0.29
   FormValidator::Lite::Constraint:
     file: lib/FormValidator/Lite/Constraint.pm
     version: 0
@@ -69,10 +69,10 @@ provides:
 requires:
   CGI: 3.31
   Class::Accessor::Lite: 0.05
+  Class::Load: 0.11
   Filter::Util::Call: 0
   Scalar::Util: 1.19
-  UNIVERSAL::require: 0.11
   perl: 5.008001
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.28
+version: 0.29
