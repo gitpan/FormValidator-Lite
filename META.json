@@ -4,7 +4,7 @@
       "Tokuhiro Matsuno E<lt>tokuhirom AAJKLFJEF@ gmail.comE<gt>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Module::Build version 0.38, CPAN::Meta::Converter version 2.112621",
+   "generated_by" : "Module::Build version 0.4003, CPAN::Meta::Converter version 2.120921",
    "license" : [
       "perl_5"
    ],
@@ -22,10 +22,10 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "Test::Base" : 0,
+            "Test::Base" : "0",
             "Test::More" : "0.98",
             "Test::Requires" : "0.05",
-            "YAML" : 0
+            "YAML" : "0"
          }
       },
       "configure" : {
@@ -38,7 +38,7 @@
             "CGI" : "3.31",
             "Class::Accessor::Lite" : "0.05",
             "Class::Load" : "0.11",
-            "Filter::Util::Call" : 0,
+            "Filter::Util::Call" : "0",
             "Scalar::Util" : "1.19",
             "perl" : "5.008001"
          }
@@ -47,7 +47,7 @@
    "provides" : {
       "FormValidator::Lite" : {
          "file" : "lib/FormValidator/Lite.pm",
-         "version" : "0.29"
+         "version" : "0.30"
       },
       "FormValidator::Lite::Constraint" : {
          "file" : "lib/FormValidator/Lite/Constraint.pm",
@@ -112,5 +112,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "0.29"
+   "version" : "0.30"
 }

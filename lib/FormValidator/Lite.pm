@@ -11,7 +11,7 @@ use Class::Accessor::Lite 0.05 (
 );
 use Class::Load ();
 
-our $VERSION = '0.29';
+our $VERSION = '0.30';
 
 our $Rules;
 our $FileRules;
@@ -260,7 +260,7 @@ IT'S IN BETA QUALITY. API MAY CHANGE IN FUTURE.
 Create a new instance.
 
 $q is query like object, such as Apache::Request, CGI.pm, Plack::Request.
-The object MUST have a C<< $q->parma >> method.
+The object MUST have a C<< $q->param >> method.
 
 =item $validator->query()
 
