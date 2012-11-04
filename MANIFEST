@@ -33,6 +33,7 @@ t/010_core/008_get_error_messages_from_param.t
 t/010_core/009_zero_regex.t
 t/010_core/010_my_own_constraint.t
 t/010_core/011_messages.t
+t/010_core/012_multivalue.t
 t/020_constraints/001_default.t
 t/020_constraints/002_japanese.t
 t/020_constraints/003_url.t

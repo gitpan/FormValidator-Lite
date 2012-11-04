@@ -47,7 +47,7 @@
    "provides" : {
       "FormValidator::Lite" : {
          "file" : "lib/FormValidator/Lite.pm",
-         "version" : "0.30"
+         "version" : "0.31"
       },
       "FormValidator::Lite::Constraint" : {
          "file" : "lib/FormValidator/Lite/Constraint.pm",
@@ -112,5 +112,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "0.30"
+   "version" : "0.31"
 }

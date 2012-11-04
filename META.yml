@@ -23,7 +23,7 @@ no_index:
 provides:
   FormValidator::Lite:
     file: lib/FormValidator/Lite.pm
-    version: 0.30
+    version: 0.31
   FormValidator::Lite::Constraint:
     file: lib/FormValidator/Lite/Constraint.pm
     version: 0
@@ -75,4 +75,4 @@ requires:
   perl: 5.008001
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.30
+version: 0.31
