@@ -11,7 +11,7 @@ use Class::Accessor::Lite 0.05 (
 );
 use Class::Load ();
 
-our $VERSION = '0.31';
+our $VERSION = '0.32';
 
 our $Rules;
 our $FileRules;
@@ -224,6 +224,7 @@ FormValidator::Lite - lightweight form validation library
 
     my $q = CGI->new();
     my $validator = FormValidator::Lite->new($q);
+    $validator->load_function_message('en');
     my $res = $validator->check(
         name => [qw/NOT_NULL/],
         name_kana => [qw/NOT_NULL KATAKANA/],

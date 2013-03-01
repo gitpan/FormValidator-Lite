@@ -1,11 +1,9 @@
 use strict;
 use warnings;
 use utf8;
-use Test::Base;
+use Test::Base::Less;
 use FormValidator::Lite;
 use CGI;
-
-plan tests => 43;
 
 filters {
     query    => [qw/eval/],
@@ -13,8 +11,7 @@ filters {
     expected => [qw/eval/],
 };
 
-run {
-    my $block = shift;
+for my $block (blocks) {
     my $q = CGI->new($block->query);
 
     my $v = FormValidator::Lite->new($q);
@@ -26,8 +23,9 @@ run {
     while (my ($key, $val) = splice(@expected, 0, 2)) {
         is($v->is_error($key), $val, $block->name);
     }
-};
+}
 
+done_testing;
 
 __END__
 

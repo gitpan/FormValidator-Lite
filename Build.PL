@@ -9,7 +9,7 @@ my $build = Module::Build->new(
     build_requires       => {
         'Test::Requires' => '0.05',
         'YAML'           => '0',
-        'Test::Base'     => 0,
+        'Test::Base::Less' => 0,
         'Test::More'     => '0.98',
     },
     configure_requires => { 'Module::Build' => '0.38' },
@@ -19,6 +19,7 @@ my $build = Module::Build->new(
         'Filter::Util::Call'    => '0',
         'Class::Load'           => '0.11',
         'Class::Accessor::Lite' => '0.05',
+        'Email::Valid::Loose'   => 0,
         'CGI'                   => '3.31'
     },
     no_index    => { 'directory' => [ 't', 'inc' ] },

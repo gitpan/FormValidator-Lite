@@ -22,7 +22,7 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "Test::Base" : "0",
+            "Test::Base::Less" : "0",
             "Test::More" : "0.98",
             "Test::Requires" : "0.05",
             "YAML" : "0"
@@ -38,6 +38,7 @@
             "CGI" : "3.31",
             "Class::Accessor::Lite" : "0.05",
             "Class::Load" : "0.11",
+            "Email::Valid::Loose" : "0",
             "Filter::Util::Call" : "0",
             "Scalar::Util" : "1.19",
             "perl" : "5.008001"
@@ -47,7 +48,7 @@
    "provides" : {
       "FormValidator::Lite" : {
          "file" : "lib/FormValidator/Lite.pm",
-         "version" : "0.31"
+         "version" : "0.32"
       },
       "FormValidator::Lite::Constraint" : {
          "file" : "lib/FormValidator/Lite/Constraint.pm",
@@ -112,5 +113,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "0.31"
+   "version" : "0.32"
 }
