@@ -11,7 +11,7 @@ use Class::Accessor::Lite 0.05 (
 );
 use Class::Load ();
 
-our $VERSION = '0.32';
+our $VERSION = '0.33';
 
 our $Rules;
 our $FileRules;
@@ -356,7 +356,7 @@ Make relational map for the parameter name to human readable name.
 
 Setup error message map.
 
-=item $validator->set_message("$param.$func" => $message)
+=item C<< $validator->set_message("$param.$func" => $message) >>
 
     $v->set_message('zip.jzip' => 'Please input correct zip number.');
 

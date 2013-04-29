@@ -1,6 +1,13 @@
-.gitignore
 Build.PL
 Changes
+LICENSE
+META.json
+README.md
+TODO
+author/benchmark.pl
+author/benchmark2.pl
+author/prof.pl
+cpanfile
 lib/FormValidator/Lite.pm
 lib/FormValidator/Lite/Constraint.pm
 lib/FormValidator/Lite/Constraint/Date.pm
@@ -16,11 +23,7 @@ lib/FormValidator/Lite/Upload.pm
 lib/FormValidator/Lite/Upload/CGI.pm
 lib/FormValidator/Lite/Upload/HTTPEngine.pm
 lib/FormValidator/Lite/Upload/PlackRequest.pm
-LICENSE
-MANIFEST			This list of files
-META.json
-META.yml
-README
+minil.toml
 t/00_compile.t
 t/010_core/001_simple.t
 t/010_core/002_get_error_message.t
@@ -50,10 +53,6 @@ t/030_upload/004_plack.t
 t/999_regression/001_break_arguments_in_check.t
 t/999_regression/002_empty_form.t
 t/dat/file_post.txt
-TODO
-xt/01_podspell.t
 xt/02_perlcritic.t
-xt/03_pod.t
-xt/04_minimum_version.t
-xt/05_cpan_meta.t
-xt/06_meta_author.t
+META.yml
+MANIFEST
