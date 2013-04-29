@@ -30,7 +30,7 @@ no_index:
 provides:
   FormValidator::Lite:
     file: lib/FormValidator/Lite.pm
-    version: 0.33
+    version: 0.34
   FormValidator::Lite::Constraint:
     file: lib/FormValidator/Lite/Constraint.pm
   FormValidator::Lite::Constraint::Date:
@@ -72,7 +72,7 @@ resources:
   bugtracker: https://github.com/tokuhirom/formvalidator-lite/issues
   homepage: https://github.com/tokuhirom/formvalidator-lite
   repository: git://github.com/tokuhirom/formvalidator-lite.git
-version: 0.33
+version: 0.34
 x_contributors:
   - 'Kan Fushihara <kan@mobilefactory.jp>'
   - 'fujiwara <fujiwara.shunichiro@gmail.com>'
@@ -84,4 +84,6 @@ x_contributors:
   - 'Yoshihiro Sasaki <aloelight@gmail.com>'
   - 'ysasaki <ysasaki@idac.co.jp>'
   - 'yowcow <yowcow@gmail.com>'
+  - 'Geraud <geraud@genta.nealab.net>'
+  - 'Geraud CONTINSOUZAS <geraud@chauchau.scsi.local>'
   - 'tokuhirom <tokuhirom@gmail.com>'
