@@ -12,7 +12,7 @@ configure_requires:
   CPAN::Meta::Prereqs: 0
   Module::Build: 0.38
 dynamic_config: 0
-generated_by: 'Minilla/v0.0.56, CPAN::Meta::Converter version 2.130880'
+generated_by: 'Minilla/v0.4.3, CPAN::Meta::Converter version 2.130880'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -30,7 +30,7 @@ no_index:
 provides:
   FormValidator::Lite:
     file: lib/FormValidator/Lite.pm
-    version: 0.34
+    version: 0.35
   FormValidator::Lite::Constraint:
     file: lib/FormValidator/Lite/Constraint.pm
   FormValidator::Lite::Constraint::Date:
@@ -43,6 +43,8 @@ provides:
     file: lib/FormValidator/Lite/Constraint/File.pm
   FormValidator::Lite::Constraint::Japanese:
     file: lib/FormValidator/Lite/Constraint/Japanese.pm
+  FormValidator::Lite::Constraint::Number:
+    file: lib/FormValidator/Lite/Constraint/Number.pm
   FormValidator::Lite::Constraint::Time:
     file: lib/FormValidator/Lite/Constraint/Time.pm
   FormValidator::Lite::Constraint::URL:
@@ -69,10 +71,10 @@ requires:
   Scalar::Util: 1.19
   perl: 5.008001
 resources:
-  bugtracker: https://github.com/tokuhirom/formvalidator-lite/issues
-  homepage: https://github.com/tokuhirom/formvalidator-lite
-  repository: git://github.com/tokuhirom/formvalidator-lite.git
-version: 0.34
+  bugtracker: https://github.com/tokuhirom/FormValidator-Lite/issues
+  homepage: https://github.com/tokuhirom/FormValidator-Lite
+  repository: git://github.com/tokuhirom/FormValidator-Lite.git
+version: 0.35
 x_contributors:
   - 'Kan Fushihara <kan@mobilefactory.jp>'
   - 'fujiwara <fujiwara.shunichiro@gmail.com>'
@@ -83,7 +85,7 @@ x_contributors:
   - 'Naoki Tomita <tomita@cpan.org>'
   - 'Yoshihiro Sasaki <aloelight@gmail.com>'
   - 'ysasaki <ysasaki@idac.co.jp>'
-  - 'yowcow <yowcow@gmail.com>'
   - 'Geraud <geraud@genta.nealab.net>'
   - 'Geraud CONTINSOUZAS <geraud@chauchau.scsi.local>'
-  - 'tokuhirom <tokuhirom@gmail.com>'
+  - 'yowcow <yowcow@gmail.com>'
+  - 'Tokuhiro Matsuno <tokuhirom@gmail.com>'
