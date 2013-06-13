@@ -12,7 +12,7 @@ configure_requires:
   CPAN::Meta::Prereqs: 0
   Module::Build: 0.38
 dynamic_config: 0
-generated_by: 'Minilla/v0.4.3, CPAN::Meta::Converter version 2.130880'
+generated_by: 'Minilla/v0.4.9, CPAN::Meta::Converter version 2.130880'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -30,7 +30,7 @@ no_index:
 provides:
   FormValidator::Lite:
     file: lib/FormValidator/Lite.pm
-    version: 0.35
+    version: 0.36
   FormValidator::Lite::Constraint:
     file: lib/FormValidator/Lite/Constraint.pm
   FormValidator::Lite::Constraint::Date:
@@ -74,7 +74,7 @@ resources:
   bugtracker: https://github.com/tokuhirom/FormValidator-Lite/issues
   homepage: https://github.com/tokuhirom/FormValidator-Lite
   repository: git://github.com/tokuhirom/FormValidator-Lite.git
-version: 0.35
+version: 0.36
 x_contributors:
   - 'Kan Fushihara <kan@mobilefactory.jp>'
   - 'fujiwara <fujiwara.shunichiro@gmail.com>'
@@ -88,4 +88,5 @@ x_contributors:
   - 'Geraud <geraud@genta.nealab.net>'
   - 'Geraud CONTINSOUZAS <geraud@chauchau.scsi.local>'
   - 'yowcow <yowcow@gmail.com>'
+  - 'soh335 <sugarbabe335@gmail.com>'
   - 'Tokuhiro Matsuno <tokuhirom@gmail.com>'

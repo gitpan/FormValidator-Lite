@@ -4,7 +4,7 @@
       "Tokuhiro Matsuno <tokuhirom AAJKLFJEF@ gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v0.4.3",
+   "generated_by" : "Minilla/v0.4.9",
    "license" : "perl_5",
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
@@ -66,7 +66,7 @@
    "provides" : {
       "FormValidator::Lite" : {
          "file" : "lib/FormValidator/Lite.pm",
-         "version" : "0.35"
+         "version" : "0.36"
       },
       "FormValidator::Lite::Constraint" : {
          "file" : "lib/FormValidator/Lite/Constraint.pm"
@@ -125,7 +125,7 @@
          "web" : "https://github.com/tokuhirom/FormValidator-Lite"
       }
    },
-   "version" : "0.35",
+   "version" : "0.36",
    "x_contributors" : [
       "Kan Fushihara <kan@mobilefactory.jp>",
       "fujiwara <fujiwara.shunichiro@gmail.com>",
@@ -139,6 +139,7 @@
       "Geraud <geraud@genta.nealab.net>",
       "Geraud CONTINSOUZAS <geraud@chauchau.scsi.local>",
       "yowcow <yowcow@gmail.com>",
+      "soh335 <sugarbabe335@gmail.com>",
       "Tokuhiro Matsuno <tokuhirom@gmail.com>"
    ]
 }
