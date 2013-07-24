@@ -10,8 +10,9 @@ use Class::Accessor::Lite 0.05 (
     rw => [qw/query/]
 );
 use Class::Load ();
+use FormValidator::Lite::Hash;
 
-our $VERSION = '0.36';
+our $VERSION = '0.37';
 
 our $Rules;
 our $FileRules;
@@ -25,6 +26,11 @@ sub new {
     my ($class, $q) = @_;
     Carp::croak("Usage: ${class}->new(\$q)") unless $q;
 
+    if (ref $q eq 'HASH') {
+        $q = FormValidator::Lite::Hash->new($q);
+    } elsif (UNIVERSAL::isa($q, 'Hash::MultiValue')) {
+        $q = FormValidator::Lite::Hash->new($q->flatten);
+    }
     bless { query => $q, _error => {} }, $class;
 }
 
@@ -300,6 +306,8 @@ Create a new instance.
 The constructor takes a mandatory argument C<< $q >> that is a query-like 
 object such as Apache::Request, CGI.pm, Plack::Request. The object MUST have
 a C<< $q->param >> method.
+
+B<EXPERIMENTAL: > You can pass the hash value for C<< $q >>.
 
 =item $validator->query()
 

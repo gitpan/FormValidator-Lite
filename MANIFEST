@@ -18,6 +18,7 @@ lib/FormValidator/Lite/Constraint/Japanese.pm
 lib/FormValidator/Lite/Constraint/Number.pm
 lib/FormValidator/Lite/Constraint/Time.pm
 lib/FormValidator/Lite/Constraint/URL.pm
+lib/FormValidator/Lite/Hash.pm
 lib/FormValidator/Lite/Messages/en.pm
 lib/FormValidator/Lite/Messages/ja.pm
 lib/FormValidator/Lite/Upload.pm
@@ -39,6 +40,8 @@ t/010_core/010_my_own_constraint.t
 t/010_core/011_messages.t
 t/010_core/012_multivalue.t
 t/010_core/013_build_message.t
+t/010_core/014_hash.t
+t/010_core/015_hash_multivalue.t
 t/020_constraints/001_default.t
 t/020_constraints/002_japanese.t
 t/020_constraints/003_url.t
