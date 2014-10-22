@@ -3,20 +3,18 @@ abstract: 'lightweight form validation library'
 author:
   - 'Tokuhiro Matsuno <tokuhirom AAJKLFJEF@ gmail.com>'
 build_requires:
-  Test::Base::Less: 0
-  Test::More: 0.98
-  Test::Requires: 0.05
-  YAML: 0
+  Test::Base::Less: '0'
+  Test::More: '0.98'
+  Test::Requires: '0.05'
+  YAML: '0'
 configure_requires:
-  CPAN::Meta: 0
-  CPAN::Meta::Prereqs: 0
-  Module::Build: 0.38
+  Module::Build: '0.38'
 dynamic_config: 0
-generated_by: 'Minilla/v0.5.5, CPAN::Meta::Converter version 2.130880'
+generated_by: 'Minilla/v2.2.0, CPAN::Meta::Converter version 2.141520'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
+  version: '1.4'
 name: FormValidator-Lite
 no_index:
   directory:
@@ -27,10 +25,11 @@ no_index:
     - eg
     - examples
     - author
+    - builder
 provides:
   FormValidator::Lite:
     file: lib/FormValidator/Lite.pm
-    version: 0.37
+    version: '0.38'
   FormValidator::Lite::Constraint:
     file: lib/FormValidator/Lite/Constraint.pm
   FormValidator::Lite::Constraint::Date:
@@ -64,19 +63,19 @@ provides:
   FormValidator::Lite::Upload::PlackRequest:
     file: lib/FormValidator/Lite/Upload/PlackRequest.pm
 requires:
-  CGI: 3.31
-  Class::Accessor::Lite: 0.05
-  Class::Load: 0.11
-  Email::Valid: 0
-  Email::Valid::Loose: 0
-  Filter::Util::Call: 0
-  Scalar::Util: 1.19
-  perl: 5.008001
+  CGI: '>= 3.31, != 4.05, != 4.06, != 4.07, != 4.08'
+  Class::Accessor::Lite: '0.05'
+  Class::Load: '0.11'
+  Email::Valid: '0'
+  Email::Valid::Loose: '0'
+  Filter::Util::Call: '0'
+  Scalar::Util: '1.19'
+  perl: '5.008001'
 resources:
   bugtracker: https://github.com/tokuhirom/FormValidator-Lite/issues
   homepage: https://github.com/tokuhirom/FormValidator-Lite
   repository: git://github.com/tokuhirom/FormValidator-Lite.git
-version: 0.37
+version: '0.38'
 x_contributors:
   - 'Kan Fushihara <kan@mobilefactory.jp>'
   - 'fujiwara <fujiwara.shunichiro@gmail.com>'
@@ -91,4 +90,7 @@ x_contributors:
   - 'Geraud CONTINSOUZAS <geraud@chauchau.scsi.local>'
   - 'yowcow <yowcow@gmail.com>'
   - 'soh335 <sugarbabe335@gmail.com>'
-  - 'tokuhirom <tokuhirom@gmail.com>'
+  - 'dayflower <daydream.trippers@gmail.com>'
+  - 'magai <xxmagai@gmail.com>'
+  - 'Géraud CONTINSOUZAS <geraud@gcu.info>'
+  - 'Tokuhiro Matsuno <tokuhirom@gmail.com>'

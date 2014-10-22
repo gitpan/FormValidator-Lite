@@ -58,6 +58,7 @@ t/030_upload/003_special.t
 t/030_upload/004_plack.t
 t/999_regression/001_break_arguments_in_check.t
 t/999_regression/002_empty_form.t
+t/999_regression/003_break_multivalue_hash.t
 t/dat/file_post.txt
 xt/02_perlcritic.t
 META.yml
